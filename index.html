@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<head>
+    
+</head>
+<body>
+    <input type="text" id="morseInput">
+    <canvas id="canvas"></canvas>
+    <img id="outputImage"><img>
+    
+    <script type="text/javascript">
+        const canvas = document.getElementById("canvas");
+        const morseInput = document.getElementById('morseInput');
+        outputImage = document.getElementById('outputImage');
+        
+        const ctx = canvas.getContext('2d');
+        ctx.font = 'bold 30px Arial'; // Sets font size and family
+        ctx.fillStyle = 'black'; // Sets text color
+        ctx.textAlign = 'center'; // Aligns text horizontally
+        ctx.textBaseline = 'middle'; // Aligns text vertically
+
+
+        morseInput.addEventListener('input', function() {
+            var inputText = morseInput.value;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillText(inputText, canvas.width / 2, canvas.height / 2);
+            
+            
+            
+            var img = canvas.toDataURL('image/png'); //https://stackoverflow.com/questions/923885/capture-html-canvas-as-gif-jpg-png-pdf
+            outputImage.src = img;
+        });
+    </script>
+</body>
