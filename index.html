@@ -3,7 +3,7 @@
     
 </head>
 <body>
-    <input type="text" id="morseInput">
+    <textarea type="text" id="morseInput" width="300px" rows="10" cols="30"></textarea>
     <canvas id="canvas"></canvas>
     <img id="outputImage"><img>
     
@@ -11,20 +11,24 @@
         const canvas = document.getElementById("canvas");
         const morseInput = document.getElementById('morseInput');
         outputImage = document.getElementById('outputImage');
+        textHeight = 30;
         
         const ctx = canvas.getContext('2d');
-        ctx.font = 'bold 30px Arial'; // Sets font size and family
+        ctx.font = 'bold '+textHeight+'px Arial'; // Sets font size and family
         ctx.textAlign = 'center'; // Aligns text horizontally
         ctx.textBaseline = 'middle'; // Aligns text vertically
 
 
         morseInput.addEventListener('input', function() {
             var inputText = morseInput.value;
+            var inputTextArray = inputText.split('\n');
 
             ctx.fillStyle = 'white'; // Sets text color
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             ctx.fillStyle = 'black'; // Sets text color
-            ctx.fillText(inputText, canvas.width / 2, canvas.height / 2);
+            for (i = 0; i < inputTextArray.length; i++){
+                ctx.fillText(inputTextArray[i], canvas.width / 2, (textHeight/2)+i*textHeight);
+            }
             
             
             
