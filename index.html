@@ -14,7 +14,6 @@
         
         const ctx = canvas.getContext('2d');
         ctx.font = 'bold 30px Arial'; // Sets font size and family
-        ctx.fillStyle = 'white'; // Sets text color
         ctx.textAlign = 'center'; // Aligns text horizontally
         ctx.textBaseline = 'middle'; // Aligns text vertically
 
@@ -22,7 +21,9 @@
         morseInput.addEventListener('input', function() {
             var inputText = morseInput.value;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white'; // Sets text color
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'black'; // Sets text color
             ctx.fillText(inputText, canvas.width / 2, canvas.height / 2);
             
             
